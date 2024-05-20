@@ -15,32 +15,32 @@ class UserInputGUI:
         window.geometry(f"{width}x{height}+{center_x}+{center_y}")
 
     def create(self, ws, time_limit):
-        root = Tk()  # Use Tk() instead of Toplevel()
-        root.title("STUDENT INFORMATION")
-        root.geometry("1000x700")
-        root.configure(bg=self.bg_color)
+        user = Tk()  # Use Tk() instead of Toplevel()
+        user.title("STUDENT INFORMATION")
+        user.geometry("1000x700")
+        user.configure(bg=self.bg_color)
 
-        self.center_window(root, 1000, 700)
+        self.center_window(user, 1000, 700)
 
-        validate_command = root.register(lambda input: input.isdigit() or input == "")
-        title_label = Label(root, text="STUDENT INFORMATION", font=("Helvetica", 18, "bold"), bg=self.bg_color, fg=self.fg_color)
+        validate_command = user.register(lambda input: input.isdigit() or input == "")
+        title_label = Label(user, text="STUDENT INFORMATION", font=("Helvetica", 18, "bold"), bg=self.bg_color, fg=self.fg_color)
         title_label.place(relx=0.5, rely=0.1, anchor='center')
 
-        Label(root, text="FIRST NAME:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.2,anchor='center')
-        fname_entry = Entry(root, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center')
+        Label(user, text="FIRST NAME:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.2,anchor='center')
+        fname_entry = Entry(user, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center')
         fname_entry.place(relx=0.5, rely=0.25, anchor='center')
 
-        Label(root, text="LAST NAME:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.3, anchor='center')
-        lname_entry = Entry(root, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center')
+        Label(user, text="LAST NAME:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.3, anchor='center')
+        lname_entry = Entry(user, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center')
         lname_entry.place(relx=0.5, rely=0.35, anchor='center')
 
-        Label(root, text="COURSE:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5,
+        Label(user, text="COURSE:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5,
                                                                                                       rely=0.4,
                                                                                                       anchor='center')
-        course_var = StringVar(root)
+        course_var = StringVar(user)
         course_var.set("SELECT COURSE")  # default value
         course_options = ["BSIT", "DEVCOM", "HM", "TM", "BSED","BEED"]
-        course_menu = ttk.Combobox(root, textvariable=course_var, values=course_options, state="readonly")
+        course_menu = ttk.Combobox(user, textvariable=course_var, values=course_options, state="readonly")
         course_menu.place(relx=0.5, rely=0.45, anchor='center')
 
         # Change the bg and fg color of the Combobox
@@ -55,18 +55,18 @@ class UserInputGUI:
         style.configure('TCombobox', font=('Helvetica', 12))
 
 
-        Label(root, text="YEAR LEVEL:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.5, anchor='center')
-        year_entry = Entry(root, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center', validate="key", validatecommand=(validate_command, "%P"))
+        Label(user, text="YEAR LEVEL:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.5, anchor='center')
+        year_entry = Entry(user, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center', validate="key", validatecommand=(validate_command, "%P"))
         year_entry.place(relx=0.5, rely=0.55, anchor='center')
 
-        Label(root, text="SECTION:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.6, anchor='center')
-        section_entry = Entry(root, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center', validate="key", validatecommand=(validate_command, "%P"))
+        Label(user, text="SECTION:", bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 15)).place(relx=0.5, rely=0.6, anchor='center')
+        section_entry = Entry(user, bg=self.bg_color, fg=self.fg_color, font=("Helvetica", 9), width=30, justify='center', validate="key", validatecommand=(validate_command, "%P"))
         section_entry.place(relx=0.5, rely=0.65, anchor='center')
 
-        error_label = Label(root, bg=self.bg_color, fg=self.fg_color)
+        error_label = Label(user, bg=self.bg_color, fg=self.fg_color)
         error_label.place(relx=0.5, rely=0.8, anchor='center')
 
-        def submit():
+        def submit(event=None):
             fname = fname_entry.get().upper()
             lname = lname_entry.get().upper()
             course = course_var.get()
@@ -78,15 +78,16 @@ class UserInputGUI:
                 return
 
             if not year.isdigit() or int(year) > 4 or int(year) < 1:
-                error_label.config(text="Year: Only 1 - 4 input.")
+                error_label.config(text="Year Level: Only 1 - 4 input.")
                 return
 
-            root.destroy()  # Destroy the UserInputGUI window after the user's information is submitted
+            user.destroy()  # Destroy the UserInputGUI window after the user's information is submitted
             self.exam_gui.create(ws, time_limit, fname, lname, year, section, course)  # Call the create method of ExamGUI  # Call the create method of ExamGUI
 
-        validate_command = root.register(lambda input: input.isdigit() or input == "")
-        submit_button = Button(root, text="Start Quiz", command=submit, bg=self.fg_color, fg=self.bg_color)
+        submit_button = Button(user, text="Start Quiz", command=submit, bg=self.fg_color, fg=self.bg_color)
         submit_button.place(relx=0.5, rely=0.75, anchor='center')  # Place the button at the center bottom of the window
 
 
-        root.bind('<Return>', submit_button)
+        user.bind('<Return>', submit)
+        
+        user.mainloop()
