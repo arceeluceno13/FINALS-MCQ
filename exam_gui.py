@@ -100,8 +100,8 @@ class ExamGUI:
                     error_label = None
 
             correct_answer = None
-            for j, option in enumerate(options[current_question_index[0]]):
-                if self.is_cell_bold(ws, row_indices[current_question_index[0]], j + 2):
+            if current_question_index[0] < len(options):
+                for j, option in enumerate(options[current_question_index[0]]):
                     correct_answer = chr(65 + j)
                     break
 
@@ -134,6 +134,8 @@ class ExamGUI:
                 # Add an exit button
                 exit_button = Button(frame, text="Exit", command=exam.destroy, bg=self.bg_color, fg=self.fg_color)
                 exit_button.pack()
+
+                exam.bind('<Return>', lambda event: exam.destroy())
 
             else:
                 display_question()
