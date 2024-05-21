@@ -1,6 +1,6 @@
 import os
 import sys
-from tkinter import Tk, Button, Label, Entry, PhotoImage, Frame, Text
+from tkinter import Tk, Button, Label, Entry, PhotoImage, Frame, Radiobutton, StringVar, Text
 from tkinter.filedialog import askopenfilename
 from login_gui import LoginGUI
 from exam_gui import ExamGUI
