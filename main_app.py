@@ -5,7 +5,7 @@ from tkinter.filedialog import askopenfilename
 from login_gui import LoginGUI
 from exam_gui import ExamGUI
 from file_handler import FileHandler
-from UserInput import UserInputGUI
+from user_input import UserInputGUI
 
 
 class MainApp:
