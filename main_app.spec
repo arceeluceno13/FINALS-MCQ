@@ -5,7 +5,7 @@ a = Analysis(
     ['main_app.py'],
     pathex=[],
     binaries=[],
-    datas=[('img/guide.PNG', 'img'), ('exam_gui.py', '.'), ('file_handler.py', '.'), ('login_gui.py', '.')],
+    datas=[('img/guide.PNG', 'img'), ('exam_gui.py', '.'), ('file_handler.py', '.'), ('login_gui.py', '.'), ('user_input.py', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
