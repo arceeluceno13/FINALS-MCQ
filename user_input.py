@@ -112,7 +112,7 @@ class UserInputGUI:
             year = year_entry.get()
             section = section_entry.get()
 
-            if not fname or not lname or not year or not section or course == "Select Course":
+            if not fname or not lname or not year or not section or not course == "Select Course":
                 error_label.config(text="Name, Year, Section, and Course are required.")
                 return
 
