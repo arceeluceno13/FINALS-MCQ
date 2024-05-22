@@ -28,13 +28,13 @@ pip install pyinstaller
   If the guide.PNG file is in the same directory as your main_app.py file, you should use the following command:
 
 ```bash 
-pyinstaller --onefile --windowed --add-data "guide.PNG;." --add-data "exam_gui.py;." --add-data "file_handler.py;." --add-data "login_gui.py;." --add-data "user_input.py;." main_app.py
+pyinstaller --onefile --windowed --add-data "logo.png;." --add-data "exam_gui.py;." --add-data "file_handler.py;." --add-data "login_gui.py;." --add-data "user_input.py;." main_app.py
   ```
 
 If the guide.PNG file is inside an img directory which is in the same directory as your main_app.py file, you should use the following command:
 
 ```bash
-pyinstaller --onefile --windowed --add-data "img/guide.PNG;img" --add-data "exam_gui.py;." --add-data "file_handler.py;." --add-data "login_gui.py;." --add-data "user_input.py;." main_app.py
+pyinstaller --onefile --windowed --add-data "img/logo.png;img" --add-data "exam_gui.py;." --add-data "file_handler.py;." --add-data "login_gui.py;." --add-data "user_input.py;." main_app.py
 ```
 
 ## LIMITATION
