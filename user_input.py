@@ -66,7 +66,7 @@ class UserInputGUI:
                                                                                                       rely=0.4,
                                                                                                       anchor='center')
         course_var = StringVar(root)
-        course_var.set("SELECT COURSE")  # default value
+        course_var.set("Select Course")  # default value
         course_options = ["BSIT", "DEVCOM", "HM", "TM", "BSED", "BEED"]
         course_menu = ttk.Combobox(root, textvariable=course_var, values=course_options, state="readonly")
         course_menu.place(relx=0.5, rely=0.45, anchor='center')
@@ -112,7 +112,7 @@ class UserInputGUI:
             year = year_entry.get()
             section = section_entry.get()
 
-            if not fname or not lname or not year or not section or not course == "Select Course":
+            if not fname or not lname or not year or not section or course == "Select Course":
                 error_label.config(text="Name, Year, Section, and Course are required.")
                 return
 
